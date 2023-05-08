@@ -1,0 +1,7 @@
+__pycache__
+sd-scripts/logs
+sd-scripts/wd14_tagger_model
+sd-scripts/venv
+sd-scripts/*.egg-info
+sd-scripts/build
+sd-scripts/wandb

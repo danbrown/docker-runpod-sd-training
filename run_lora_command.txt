@@ -33,10 +33,10 @@ accelerate launch \
   --gradient_checkpointing 
 
 
-python ./train_network.py \
-  --pretrained_model_name_or_path="/Users/danbrown/Workbench/DanBrown/StableDiffuser/LORA_TRAINING/anylora-v1.safetensors" \
-  --train_data_dir="/Users/danbrown/Workbench/DanBrown/StableDiffuser/LORA_TRAINING/TestmanLora/img" \
-  --output_dir="/Users/danbrown/Workbench/DanBrown/StableDiffuser/LORA_TRAINING/TestmanLora/model" \
+python ./sd-scripts/train_network.py \
+  --pretrained_model_name_or_path="/workspace/loras/anylora-v1.safetensors" \
+  --train_data_dir="/workspace/loras/TestmanLora/img" \
+  --output_dir="/workspace/loras/TestmanLora/model" \
   --output_name="Testman-v1-8" \
   --save_model_as=safetensors \
   --network_module=networks.lora \

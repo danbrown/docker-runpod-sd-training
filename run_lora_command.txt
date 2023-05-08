@@ -1,11 +1,11 @@
 accelerate launch \
   "train_network.py" \
-  --enable_bucket \
   --pretrained_model_name_or_path="/Users/danbrown/Workbench/DanBrown/StableDiffuser/LORA_TRAINING/anylora-v1.safetensors" \
   --train_data_dir="/Users/danbrown/Workbench/DanBrown/StableDiffuser/LORA_TRAINING/TestmanLora/img" \
-  --resolution=512,512 \
   --output_dir="/Users/danbrown/Workbench/DanBrown/StableDiffuser/LORA_TRAINING/TestmanLora/model" \
   --logging_dir="/Users/danbrown/Workbench/DanBrown/StableDiffuser/LORA_TRAINING/TestmanLora/log" \
+  --enable_bucket \
+  --resolution=512,512 \
   --network_alpha="128" \
   --save_model_as=safetensors \
   --network_module=networks.lora \
@@ -34,6 +34,55 @@ accelerate launch \
 
 
 python ./sd-scripts/train_network.py \
+  --pretrained_model_name_or_path="/workspace/loras/anylora-v1.safetensors" \
+  --train_data_dir="/workspace/loras/TestmanLora/img" \
+  --output_dir="/workspace/loras/TestmanLora/model" \
+  --output_name="Testman-v1-8" \
+  --enable_bucket \
+  --resolution=512,512 \
+  --network_alpha="128" \
+  --save_model_as=safetensors \
+  --network_module=networks.lora \
+  --text_encoder_lr=5e-5 \
+  --unet_lr=0.0001 \
+  --network_dim=128 \
+  --lr_scheduler_num_cycles="1" \
+  --learning_rate="0.0001" \
+  --lr_scheduler="constant" \
+  --train_batch_size="5" \
+  --max_train_steps="500" \
+  --save_every_n_epochs="1" \
+  --mixed_precision="bf16" \
+  --save_precision="bf16" \
+  --seed="12345" \
+  --caption_extension=".txt" \
+  --cache_latents \
+  --optimizer_type="AdamW8bit" \
+  --max_data_loader_n_workers="1" \
+  --clip_skip=2 \
+  --bucket_reso_steps=64 \
+  --save_every_n_steps="500" \
+  --mem_eff_attn \
+  --gradient_checkpointing 
+
+
+
+
+add-apt-repository ppa:deadsnakes/ppa && \
+apt-get install python3.10
+
+python -m venv venv && \
+source venv/bin/activate
+
+pip install torch==1.12.1 torchvision==0.13.1 && \
+pip install -r requirements.txt --prefer-binary && \
+pip install protobuf==3.20.3 && \
+pip install lion_pytorch 
+
+
+
+
+python3.10 ./sd-scripts/train_network.py \
   --pretrained_model_name_or_path="/workspace/loras/anylora-v1.safetensors" \
   --train_data_dir="/workspace/loras/TestmanLora/img" \
   --output_dir="/workspace/loras/TestmanLora/model" \

@@ -14,6 +14,7 @@ WORKDIR /workspace/training
 # install requirements
 RUN conda run -n ldm pip install torch==1.12.1 torchvision==0.13.1
 RUN conda run -n ldm pip install -r requirements.txt --prefer-binary
+RUN conda run -n ldm pip install protobuf==3.20
 RUN conda run -n ldm pip install lion_pytorch
 WORKDIR /workspace
 

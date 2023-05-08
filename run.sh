@@ -7,5 +7,5 @@
 # pip install -r api/requirements.txt
 
 # pull the latest changes
-cd ./api && git pull && cd ..
+cd ./training && git pull && cd ..
 

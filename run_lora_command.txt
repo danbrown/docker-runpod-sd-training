@@ -1,3 +1,5 @@
+https://hackmd.io/@cy2023/r1_sKqlg3
+
 accelerate launch \
   "train_network.py" \
   --pretrained_model_name_or_path="/Users/danbrown/Workbench/DanBrown/StableDiffuser/LORA_TRAINING/anylora-v1.safetensors" \
